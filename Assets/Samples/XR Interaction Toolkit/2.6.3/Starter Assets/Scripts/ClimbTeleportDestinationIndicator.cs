@@ -72,6 +72,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
             m_ClimbTeleportInteractor.hoverEntered.AddListener(OnInteractorHoverEntered);
             m_ClimbTeleportInteractor.hoverExited.AddListener(OnInteractorHoverExited);
         }
+
         /// <summary>
         /// See <see cref="MonoBehaviour"/>.
         /// </summary>
