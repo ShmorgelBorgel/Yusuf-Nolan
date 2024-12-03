@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tomato.unity
     guid: c812886a01b759a4d85f9a99ff26cc18
-  m_configObjects: {}
+  m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 2de6113ccf3d0044c9315fafd05be468,
+      type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: f3cbc403f22d6e84d8f521c53e98e169,
+      type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: c76d555f96f21a249b25dc8b15ac61b1,
+      type: 2}
