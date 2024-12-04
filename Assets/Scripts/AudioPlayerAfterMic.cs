@@ -9,10 +9,15 @@ public class AudioPlayerAfterMic : MonoBehaviour
 
     public AudioClip audioClipToPlayAfterSilence;
     public float silenceThreshold = 0.02f;  // Adjust as needed for sensitivity
+    public float firstThreshold = 0.04f;
+    public float secondThreshold = 0.06f;
     public float silenceDuration = 2.0f;    // Time to detect silence (in seconds)
 
     private float silenceTimer = 0.0f;
     private bool isRecording = true;
+
+    public GameObject _glove;
+    public Vector3 gloveSize;
 
     void Start()
     {
@@ -63,25 +68,39 @@ public class AudioPlayerAfterMic : MonoBehaviour
         float averageVolume = sum / samples.Length;
 
         // Check if the input volume is below the silence threshold
-        if (averageVolume < silenceThreshold)
+        if (averageVolume > silenceThreshold)
         {
             // Increment the silence timer
             silenceTimer += Time.deltaTime;
 
             // If silence has been detected for the defined duration, stop the microphone and play the audio clip
-            if (silenceTimer >= silenceDuration)
+            /*if (silenceTimer >= silenceDuration)
             {
                 StopMicrophoneAndPlayClip();
-            }
+            }*/
         }
+
+        if (averageVolume > firstThreshold)
+        {
+            gloveSize = new Vector3(+0.01f, 0.01f, 0.01f);
+        }
+
+        if (averageVolume > secondThreshold)
+        {
+            gloveSize = new Vector3(+0.03f, 0.03f, 0.03f);
+        }
+        
+        
+        
         else
         {
             // Reset the silence timer if there's sound
             silenceTimer = 0.0f;
+            
         }
     }
 
-    void StopMicrophoneAndPlayClip()
+    /*void StopMicrophoneAndPlayClip()
     {
         // Stop recording from the microphone
         if (Microphone.IsRecording(null))
@@ -97,5 +116,5 @@ public class AudioPlayerAfterMic : MonoBehaviour
             audioClipSource.clip = audioClipToPlayAfterSilence;
             audioClipSource.Play();
         }
-    }
+    }*/
 }
