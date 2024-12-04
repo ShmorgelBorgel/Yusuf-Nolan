@@ -169,11 +169,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioClipToPlayAfterSilence: {fileID: 0}
   silenceThreshold: 0.02
-  firstThreshold: 0.04
-  secondThreshold: 0.06
+  firstThreshold: 0.1
+  secondThreshold: 0.2
   silenceDuration: 2
-  _glove: {fileID: 0}
-  gloveSize: {x: 0, y: 0, z: 0}
+  firstThresholdMat: {fileID: 2100000, guid: ecff26009a756534995fc85cce106021, type: 2}
+  secondThresholdMat: {fileID: 2100000, guid: c3cb3797d676cb14cb0cde44d6a823c7, type: 2}
+  _glove: {fileID: 22169488245373120}
+  gloveSize: {x: 1, y: 1, z: 1}
 --- !u!114 &830311877271251083
 MonoBehaviour:
   m_ObjectHideFlags: 0

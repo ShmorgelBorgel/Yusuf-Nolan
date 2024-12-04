@@ -9,7 +9,7 @@ public class AudioPlayerAfterMic : MonoBehaviour
     private AudioSource audioClipSource;
 
     public AudioClip audioClipToPlayAfterSilence;
-    public float silenceThreshold = 0.02f;  // Adjust as needed for sensitivity
+    public float silenceThreshold = 0.02f;  
     public float firstThreshold = 0.04f;
     public float secondThreshold = 0.06f;
     public float silenceDuration = 2.0f;    // Time to detect silence (in seconds)
@@ -59,9 +59,11 @@ public class AudioPlayerAfterMic : MonoBehaviour
 
     void MonitorMicrophoneInput()
     {
+        _glove.transform.localScale = gloveSize;
         // Get microphone audio levels by analyzing the current microphone output
         float[] samples = new float[256];
         microphoneSource.GetOutputData(samples, 0);
+        
 
         // Calculate the average volume of the input
         float sum = 0;
@@ -84,16 +86,19 @@ public class AudioPlayerAfterMic : MonoBehaviour
             }*/
         }
 
-        if (averageVolume > firstThreshold)
+        else if (averageVolume > firstThreshold)
         {
-            gloveSize = new Vector3(+0.5f, 0.5f, 0.5f);
+            gloveSize = new Vector3(+2, 2f, 2f);
             _glove.GetComponent<MeshRenderer>().material = firstThresholdMat;
+            Debug.Log("Volume crossed first threshold!");
 
         }
 
-        if (averageVolume > secondThreshold)
+        else if (averageVolume > secondThreshold)
         {
-            gloveSize = new Vector3(+0.03f, 0.03f, 0.03f);
+            gloveSize = new Vector3(+4f, 4f, 4f);
+            _glove.GetComponent<MeshRenderer>().material = secondThresholdMat;
+            Debug.Log("Volume crossed second threshold!");
         }
         
         
