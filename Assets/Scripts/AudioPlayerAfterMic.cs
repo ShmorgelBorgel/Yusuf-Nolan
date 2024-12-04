@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AudioPlayerAfterMic : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class AudioPlayerAfterMic : MonoBehaviour
     public float firstThreshold = 0.04f;
     public float secondThreshold = 0.06f;
     public float silenceDuration = 2.0f;    // Time to detect silence (in seconds)
+
+    public Material firstThresholdMat;
+    public Material secondThresholdMat;
 
     private float silenceTimer = 0.0f;
     private bool isRecording = true;
@@ -82,7 +86,9 @@ public class AudioPlayerAfterMic : MonoBehaviour
 
         if (averageVolume > firstThreshold)
         {
-            gloveSize = new Vector3(+0.01f, 0.01f, 0.01f);
+            gloveSize = new Vector3(+0.5f, 0.5f, 0.5f);
+            _glove.GetComponent<MeshRenderer>().material = firstThresholdMat;
+
         }
 
         if (averageVolume > secondThreshold)

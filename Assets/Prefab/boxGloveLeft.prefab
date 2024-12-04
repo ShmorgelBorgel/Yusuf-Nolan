@@ -76,7 +76,9 @@ MonoBehaviour:
   firstThreshold: 0.04
   secondThreshold: 0.06
   silenceDuration: 2
-  _glove: {fileID: 0}
+  firstThresholdMat: {fileID: 2100000, guid: ed06d7d59c5e196448c9527c7c5e243c, type: 2}
+  secondThresholdMat: {fileID: 2100000, guid: 39c367e7c6efe1d4b80a6c82590952bf, type: 2}
+  _glove: {fileID: 3049738397743912308}
   gloveSize: {x: 0, y: 0, z: 0}
 --- !u!82 &8758581215086167244
 AudioSource:
