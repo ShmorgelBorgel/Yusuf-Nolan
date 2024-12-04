@@ -18,6 +18,8 @@ public class TomatoLauncher : MonoBehaviour
     public AudioClip launchSound; // Assign the sound in the Inspector
     private AudioSource audioSource;
 
+    
+    public float verticalArc = 5f; // Angle of the arc in degrees
     void Start()
     {
         // Get or add an AudioSource component
@@ -43,14 +45,24 @@ public class TomatoLauncher : MonoBehaviour
             launchTimer = launchInterval; // Reset the timer
         }
     }
+    Vector3 CalculateLaunchDirection(Vector3 targetPosition)
+    {
+        // Calculate the flat direction toward the player
+        Vector3 flatDirection = (targetPosition - launchPoint.position).normalized;
 
+        // Adjust the vertical component to add an arc
+        flatDirection.y += verticalArc;
+
+        // Re-normalize to maintain consistent speed
+        return flatDirection.normalized;
+    }
     void LaunchTomato()
     {
         // Get the main camera's position
         Transform mainCamera = Camera.main.transform;
 
         // Calculate the direction from the launchPoint to the main camera
-        Vector3 direction = (mainCamera.position - launchPoint.position).normalized;
+        Vector3 direction = CalculateLaunchDirection(mainCamera.position);
 
         // Instantiate and launch the projectile
         var _projectile = Instantiate(projectile, launchPoint.position, Quaternion.LookRotation(direction));
