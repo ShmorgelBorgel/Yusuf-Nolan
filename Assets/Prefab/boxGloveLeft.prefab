@@ -72,9 +72,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClipToPlayAfterSilence: {fileID: 0}
-  silenceThreshold: 0.02
-  firstThreshold: 0.1
-  secondThreshold: 0.2
+  silenceThreshold: 0.05
+  firstThreshold: 0.49
+  secondThreshold: 0.95
   silenceDuration: 2
   firstThresholdMat: {fileID: 2100000, guid: ecff26009a756534995fc85cce106021, type: 2}
   secondThresholdMat: {fileID: 2100000, guid: c3cb3797d676cb14cb0cde44d6a823c7, type: 2}

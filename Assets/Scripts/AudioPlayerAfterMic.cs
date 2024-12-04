@@ -73,37 +73,31 @@ public class AudioPlayerAfterMic : MonoBehaviour
         }
         float averageVolume = sum / samples.Length;
 
-        // Check if the input volume is below the silence threshold
-        if (averageVolume > silenceThreshold)
+        if (averageVolume > secondThreshold)
         {
-            // Increment the silence timer
-            silenceTimer += Time.deltaTime;
-
-            // If silence has been detected for the defined duration, stop the microphone and play the audio clip
-            /*if (silenceTimer >= silenceDuration)
-            {
-                StopMicrophoneAndPlayClip();
-            }*/
-        }
-
-        else if (averageVolume > firstThreshold)
+            gloveSize = new Vector3(+4f, 4f, 4f);
+            _glove.GetComponent<MeshRenderer>().material = secondThresholdMat;
+            Debug.Log("Volume crossed second threshold!");
+        } else if (averageVolume > firstThreshold)
         {
             gloveSize = new Vector3(+2, 2f, 2f);
             _glove.GetComponent<MeshRenderer>().material = firstThresholdMat;
             Debug.Log("Volume crossed first threshold!");
 
         }
-
-        else if (averageVolume > secondThreshold)
+        
+        // Check if the input volume is below the silence threshold
+        else if (averageVolume > silenceThreshold)
         {
-            gloveSize = new Vector3(+4f, 4f, 4f);
-            _glove.GetComponent<MeshRenderer>().material = secondThresholdMat;
-            Debug.Log("Volume crossed second threshold!");
-        }
-        
-        
-        
-        else
+            // Increment the silence timer
+           // silenceTimer += Time.deltaTime;
+
+            // If silence has been detected for the defined duration, stop the microphone and play the audio clip
+            /*if (silenceTimer >= silenceDuration)
+            {
+                StopMicrophoneAndPlayClip();
+            }*/
+        }  else
         {
             // Reset the silence timer if there's sound
             silenceTimer = 0.0f;
