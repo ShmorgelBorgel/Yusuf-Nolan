@@ -13,6 +13,11 @@ public class GloveSizer : MonoBehaviour
     public float secondThreshold = 0.06f;
     public float silenceDuration = 2.0f; // Time to detect silence (in seconds)
 
+    [Range(0,0.1f)]
+    public float test;
+
+    public bool testing;
+    
     public Material firstThresholdMat;
     public Material secondThresholdMat;
 
@@ -60,33 +65,36 @@ public class GloveSizer : MonoBehaviour
 
     void MonitorMicrophoneInput()
     {
-        _glove.transform.localScale = gloveSize;
         // Get microphone audio levels by analyzing the current microphone output
-        float[] samples = new float[256];
-        microphoneSource.GetOutputData(samples, 0);
-
-
-        // Calculate the average volume of the input
-        float sum = 0;
-        foreach (float sample in samples)
+        float averageVolume = test;
+        if (!testing)
         {
-            sum += Mathf.Abs(sample);
+            float[] samples = new float[256];
+            microphoneSource.GetOutputData(samples, 0);
+
+
+            // Calculate the average volume of the input
+            float sum = 0;
+            foreach (float sample in samples)
+            {
+                sum += Mathf.Abs(sample);
+            }
+            averageVolume = sum / samples.Length;
         }
-
-        float averageVolume = sum / samples.Length;
-
+        
+        
         if (averageVolume > secondThreshold)
         {
             gloveSize = new Vector3(4f, 4f, 4f);
-            _glove.GetComponent<MeshRenderer>().material = secondThresholdMat;
+            _glove.GetComponentInChildren<MeshRenderer>().material = secondThresholdMat;
             Debug.Log("Volume crossed second threshold!");
         }
         else if (averageVolume > firstThreshold)
         {
             gloveSize = new Vector3(2, 2f, 2f);
-            _glove.GetComponent<MeshRenderer>().material = firstThresholdMat;
+            _glove.GetComponentInChildren<MeshRenderer>().material = firstThresholdMat;
             Debug.Log("Volume crossed first threshold!");
-
+            
         }
         else if (averageVolume > silenceThreshold)
         {
@@ -104,5 +112,6 @@ public class GloveSizer : MonoBehaviour
             // Reset the silence timer if there's sound
             silenceTimer = 0.0f;
         }
+        _glove.transform.localScale = gloveSize;
     }
 }
