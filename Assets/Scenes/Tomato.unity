@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 0.36
+  m_AmbientIntensity: 0.47
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 82b660520bdecce4daf45d270ec93fe4, type: 2}
@@ -809,11 +809,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f205160b31c050546951b08e9270e1bd,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 901516422}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f205160b31c050546951b08e9270e1bd, type: 3}
 --- !u!4 &662806570 stripped
 Transform:
@@ -1317,48 +1313,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 662806569}
   m_PrefabAsset: {fileID: 0}
---- !u!23 &901516422
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 901516421}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &925251719 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8109415542560094018, guid: 8ba3d507e5a436545aef641e6b520773,
@@ -1606,10 +1560,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClipToPlayAfterSilence: {fileID: 0}
-  silenceThreshold: 0.02
-  firstThreshold: 0.05
-  secondThreshold: 0.1
+  silenceThreshold: 0.01
+  firstThreshold: 0.02
+  secondThreshold: 0.5
   silenceDuration: 2
+  test: 0.0011
+  testing: 0
   firstThresholdMat: {fileID: 2100000, guid: ecff26009a756534995fc85cce106021, type: 2}
   secondThresholdMat: {fileID: 2100000, guid: c3cb3797d676cb14cb0cde44d6a823c7, type: 2}
   _glove: {fileID: 901516421}
@@ -1641,7 +1597,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2405,6 +2361,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall outer
       objectReference: {fileID: 0}
+    - target: {fileID: 7202271454713460447, guid: 8dffb4d5640433840b38c8f9eb1350f6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4ed4cc22ead393c4ca3bf9f2b45f3d9e, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 65702495048144492, guid: 8dffb4d5640433840b38c8f9eb1350f6, type: 3}
@@ -3348,10 +3309,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClipToPlayAfterSilence: {fileID: 0}
-  silenceThreshold: 0.02
-  firstThreshold: 0.05
-  secondThreshold: 0.1
+  silenceThreshold: 0.01
+  firstThreshold: 0.02
+  secondThreshold: 0.5
   silenceDuration: 2
+  test: 0.0005
+  testing: 0
   firstThresholdMat: {fileID: 2100000, guid: ecff26009a756534995fc85cce106021, type: 2}
   secondThresholdMat: {fileID: 2100000, guid: c3cb3797d676cb14cb0cde44d6a823c7, type: 2}
   _glove: {fileID: 2130313933}
@@ -3383,7 +3346,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0

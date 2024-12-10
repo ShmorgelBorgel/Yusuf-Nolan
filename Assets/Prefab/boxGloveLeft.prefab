@@ -68,7 +68,7 @@ GameObject:
   - component: {fileID: 2891272745191323172}
   - component: {fileID: 2598895029972453580}
   m_Layer: 0
-  m_Name: Group25797
+  m_Name: GloveScaleMeshLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

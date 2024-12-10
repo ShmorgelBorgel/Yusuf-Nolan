@@ -85,13 +85,13 @@ public class GloveSizer : MonoBehaviour
         
         if (averageVolume > secondThreshold)
         {
-            gloveSize = new Vector3(4f, 4f, 4f);
+            gloveSize = new Vector3(8f, 8f, 8f);
             _glove.GetComponentInChildren<MeshRenderer>().material = secondThresholdMat;
             Debug.Log("Volume crossed second threshold!");
         }
         else if (averageVolume > firstThreshold)
         {
-            gloveSize = new Vector3(2, 2f, 2f);
+            gloveSize = new Vector3(5f, 5f, 5f);
             _glove.GetComponentInChildren<MeshRenderer>().material = firstThresholdMat;
             Debug.Log("Volume crossed first threshold!");
             
